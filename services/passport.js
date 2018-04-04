@@ -13,6 +13,7 @@ const localLogin = new localStratergy(localOptions, function(
   password,
   done
 ) {
+  console.log(email, password);
   //verify email and password and call "done" with the user if they are correct
   // othrewise call done without a user object
   User.findOne({ email: email }, function(err, user) {
@@ -30,11 +31,13 @@ const localLogin = new localStratergy(localOptions, function(
       if (!isMatch) {
         return done(null, false);
       }
-      if (!isMatch) {
+      if (isMatch) {
         return done(null, user);
       }
     });
   });
+
+  //return done(null,false);
 });
 
 //Setup options for JWT Stratergy

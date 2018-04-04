@@ -8,6 +8,7 @@ function tokenForUser(user) {
 }
 
 exports.signIn = function(req, res, next) {
+  console.log("signIn");
   res.send({ token: tokenForUser(req.user) }); // user object is added in req by passport. This happens when we call done(null,user) in passport.js
 };
 exports.signUp = function(req, res, next) {

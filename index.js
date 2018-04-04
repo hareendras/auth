@@ -5,6 +5,7 @@ const morgan = require("morgan");
 const app = express();
 const router = require("./router");
 const mongoose = require("mongoose");
+const cors = require("cors");
 // DB setup
 mongoose
   .connect("mongodb://localhost/auth")
@@ -14,6 +15,7 @@ mongoose
 // app setup
 
 app.use(morgan("combined")); // app.use registers middleware => morgan here is a loggin framework
+app.use(cors());
 app.use(bodyParser.json({ type: "*/*" })); // bodyparser parses any incoming request as JSON
 router(app);
 
